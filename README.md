@@ -1,10 +1,3 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
 # 推しヶ原の戦い
 
 
@@ -34,7 +27,7 @@ Things you may want to cover:
 ・歴史が好き
 ・戦国武将が好きな人
 ・戦国時代が好きな人
-・歴代武将が好きな人 
+・歴代武将が好きな人
 ・日本史が好きな人または興味がある人
 ・戦国ゲームが好きな人
 ・武将好き同士交流したい人
@@ -71,7 +64,7 @@ Things you may want to cover:
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
- 
+
 
 ## 使用素材
 ・使用検討中
