@@ -1,0 +1,2 @@
+class Bushou < ApplicationRecord
+end

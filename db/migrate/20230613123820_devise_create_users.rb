@@ -36,6 +36,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.integer :bushou_id, null: false
       t.string :name, null: false
       t.boolean :is_deleted, null: false, default: false
+
       t.timestamps null: false
     end
 
