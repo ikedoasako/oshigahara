@@ -14,12 +14,12 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/' => 'homes#top'
     get '/users' => 'users#index'
-    get '/users/:id' => 'users#show', as: 'show'
-    get '/users/:id/edit' => 'users#edit', as: 'edit'
+    get '/users/:id' => 'users#show', as: 'users_show'
+    get '/users/:id/edit' => 'users#edit', as: 'users_edit'
     patch '/users/:id' => 'users#update'
+    resources :bushous
     resources :comments, only: [:index, :show, :destroy]
     resources :posts, only: [:index, :show, :edit, :update]
-    resources :bushous
   end
 
 
@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     patch '/users/betrayed' => 'users#betrayed'
     get '/users/unsubscribed' => 'users#unsubscribed'
     patch '/users/withdraw' => 'users#withdraw'
-    resources :busyous, only: [:index, :show]
+    resources :bushous, only: [:index, :show]
     resources :comments, only: [:create, :destroy]
     resources :favorites, only: [:create, :destroy]
     resources :posts

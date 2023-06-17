@@ -1,4 +1,5 @@
 class Public::BushousController < ApplicationController
+  
   def index
   end
 

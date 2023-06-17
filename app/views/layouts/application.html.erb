@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Oshigahara</title>
+    <title>推しヶ原の戦い</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,13 +11,61 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <header id="header">
-    <div class="header_wrap">
-      
-    </div>
-  </header>
 
   <body>
+    <header>
+      <% if user_signed_in? %>
+      <!--会員がログインしていたら-->
+      <il>
+        <%= current_user.name %>ようこそ！
+      </il>
+      <il>
+        <%= link_to "マイページ", users_my_page_path, class: "btn btn-outline-secondary" %>
+      </il>
+      <il>
+        <%= link_to "武将一覧", bushous_path, class: "btn btn-outline-secondary" %>
+      </il>
+      <il>
+        <%= link_to "投稿一覧", posts_path, class: "btn btn-outline-secondary" %>
+      </il>
+      <li>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary" %>
+      </li>
+
+      <% elsif admin_signed_in? %>
+      <!--管理者がログインしていたら-->
+      <il>
+        <%= link_to "武将一覧", admin_bushous_path, class: "btn btn-outline-info" %>
+      </il>
+      <il>
+        <%= link_to "会員一覧", admin_users_path, class: "btn btn-outline-info" %>
+      </il>
+      <il>
+        <%= link_to "投稿履歴一覧", admin_path, class: "btn btn-outline-info" %>
+      </il>
+      <il>
+        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-info" %>
+      </il>
+
+      <% else %>
+      <!--ログインしていなかったら-->
+      <il>
+        <%= link_to "このサイトについて", about_path, class: "btn btn-outline-secondary" %>
+      </il>
+      <il>
+        <%= link_to "武将一覧",  bushous_path, class: "btn btn-outline-secondary" %>
+      </il>
+      <il>
+        <%= link_to "投稿一覧", posts_path, class: "btn btn-outline-secondary" %>
+      </il>
+      <li>
+        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-secondary" %>
+      </li>
+      <li>
+        <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-secondary" %>
+      </li>
+      <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>
