@@ -4,10 +4,9 @@
 <%= form_with model: @user, url: user_registration_path, method: :post do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
 
-  <div class="row">
     <div class="form_group">
       <%= f.label "所属軍"%>
-      <%= f.select :bushou, [['織田信長',1], ['上杉謙信',2], ['伊達政宗',3], ['真田幸村',4], ['徳川家康',5],
+      <%= f.select :bushou_name, [['織田信長',1], ['上杉謙信',2], ['伊達政宗',3], ['真田幸村',4], ['徳川家康',5],
       ['豊臣秀吉',6], ['武田信玄',7], ['黒田官兵衛',8], ['明智光秀',9], ['石田三成',10]] %>
     </div>
     <div class="field">
@@ -15,19 +14,19 @@
       <%= f.text_field :name %>
     </div>
     <div class="field">
-      <%= f.label "メールアドレス" %><br />
+      <%= f.label "メールアドレス" %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
     <div class="field">
       <%= f.label "パスワード" %>
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> 文字以上)</em>
-      <% end %><br />
+      <% end %>
       <%= f.password_field :password %>
     </div>
 
     <div class="field">
-      <%= f.label "パスワード（確認用）" %><br />
+      <%= f.label "パスワード（確認用）" %>
       <%= f.password_field :password %>
     </div>
 
@@ -35,7 +34,6 @@
       <%= f.submit "新規登録" %>
     </div>
   <% end %>
-  </div>
 
   <div class="row">
     <p></p>
