@@ -9,7 +9,7 @@ class Admin::BushousController < ApplicationController
   def create
     @bushou = Bushou.new(bushou_params)
     #binding.pry
-    if @bushou.save!
+    if @bushou.save
       flash[:notice] = "You have created bushou successfully"
       redirect_to admin_bushous_path(@bushou)
     else
@@ -23,8 +23,8 @@ class Admin::BushousController < ApplicationController
   end
 
   def index
-    @bushous = Bushou.all
-    #@bushous = Bushou.page(params[:page])
+    #@bushous = Bushou.all
+    @bushous = Bushou.page(params[:page])
   end
 
   def edit

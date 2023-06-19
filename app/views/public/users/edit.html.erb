@@ -1,6 +1,7 @@
 <p id="notice"><%= flash[:notice] %></p>
 <div class="container mt-5">
 <h4><%= @user.name %>殿の会員情報編集</h4>
+<p></p>
   <form>
   <%= form_with model: @user, url: users_information_path, method: :patch do |f| %>
 

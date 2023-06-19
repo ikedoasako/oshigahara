@@ -1,7 +1,7 @@
 class Bushou < ApplicationRecord
 
   has_one_attached :image
-  belongs_to :user, optional: true
+  has_many :users, dependent: :destroy
   has_many :posts, dependent: :destroy
 
   def get_image(width, height)
