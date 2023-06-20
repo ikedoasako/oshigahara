@@ -35,7 +35,7 @@ class Admin::BushousController < ApplicationController
     @bushou = Bushou.find(params[:id])
     if @bushou.update(bushou_params)
       flash[:notice] = "編集しました"
-      redirect_to admin_bushou_path(@bushou.id)
+      redirect_to admin_bushous_path
     else
       render :edit
     end

@@ -6,7 +6,7 @@
   <div class="row">
     <% @bushous.each do |bushou| %>
     <div class="col-sm-2">
-      <p><%= link_to bushou_path(bushou.id) do %>
+      <p><%= link_to admin_bushou_path(bushou.id) do %>
          <%= image_tag bushou.get_image(150,150) %>
          <% end %>
       </p>
@@ -16,8 +16,6 @@
     <% end %>
   </div>
   <div class="row ustify-content-center">
-    <div class="col-mx-auto">
-      <%= paginate @bushous %>
-    </div>
+    <%= paginate @bushous %>
   </div>
 </div>
