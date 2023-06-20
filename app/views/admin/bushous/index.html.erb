@@ -1,33 +1,22 @@
 <div class="container mt-5">
   <h3>武将一覧</h3>
+  <div class="col-2">
+    <%= link_to "新規登録", new_admin_bushou_path, class: "btn btn-light" %>
+  </div>
   <div class="row">
-    <div class="col-2">
-      <%= link_to "新規登録", new_admin_bushou_path, class: "btn btn-light" %>
+    <% @bushous.each do |bushou| %>
+    <div class="col-sm-2">
+      <p><%= link_to bushou_path(bushou.id) do %>
+         <%= image_tag bushou.get_image(150,150) %>
+         <% end %>
+      </p>
+      <p><%= bushou.id %></p>
+      <p><%= bushou.bushou_name %></p>
     </div>
-    <div class="table-responsive">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>武将ID</th>
-            <th>武将画像</th>
-            <th>武将名</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @bushous.each do |bushou| %>
-          <tr>
-            <td><%= bushou.id %></td>
-            <td><%= link_to admin_bushou_path(bushou.id) do %>
-                <%= image_tag bushou.get_image(100,100) %>
-                <% end %>
-            </td>
-            <td><%= bushou.bushou_name %></td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-    </div>
-    <div class="row ustify-content-center">
+    <% end %>
+  </div>
+  <div class="row ustify-content-center">
+    <div class="col-mx-auto">
       <%= paginate @bushous %>
     </div>
   </div>
