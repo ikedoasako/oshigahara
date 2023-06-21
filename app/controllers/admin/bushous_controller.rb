@@ -13,7 +13,6 @@ class Admin::BushousController < ApplicationController
       flash[:notice] = "You have created bushou successfully"
       redirect_to admin_bushous_path(@bushou)
     else
-      #@bushous = Bushou.all
       render :index
     end
   end

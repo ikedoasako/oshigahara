@@ -16,8 +16,8 @@
       <% @users.each do |user| %>
       <tr>
         <td><%= user.id %></td>
-        <td><%= link_to user.name, admin_users_show_path(user.id) %></td>
-        <td><%= user.bushou_id %></td>
+        <td><%= link_to user.name, admin_user_path(user.id) %></td>
+        <td><%= user.bushou.bushou_name %></td>
         <td><%= user.email %></td>
         <td class="text-secondary font-weight-bold">
         <% if user.is_deleted? %>

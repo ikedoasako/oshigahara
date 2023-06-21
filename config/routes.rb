@@ -13,10 +13,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/' => 'homes#top'
-    get '/users' => 'users#index'
-    get '/users/:id' => 'users#show', as: 'users_show'
-    get '/users/:id/edit' => 'users#edit', as: 'users_edit'
-    patch '/users/:id' => 'users#update'
+    resources :users
     resources :bushous
     resources :comments, only: [:index, :show, :destroy]
     resources :posts, only: [:index, :show, :edit, :update]
