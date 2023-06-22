@@ -1,2 +1,20 @@
-<h1>Public::Users#betray</h1>
-<p>Find me in app/views/public/users/betray.html.erb</p>
+<div class="container mt-5">
+<h4><strong>本当に寝返りますか？</h4></strong>
+  <div class="row">
+  <%= form_with model: @user, url: users_information_path, method: :patch do |f| %>
+    <div class="form_group">
+      <%= f.label "所属軍"%>
+      <%= f.select :bushou_name, [['織田信長',1], ['上杉謙信',2], ['伊達政宗',3], ['真田幸村',4], ['徳川家康',5],
+      ['豊臣秀吉',6], ['武田信玄',7], ['黒田官兵衛',8], ['明智光秀',9], ['石田三成',10]] %>
+    </div>
+    <div class="row">
+      <div class="col mx-5">
+        <%= link_to "寝返らない", users_my_page_path, class: "btn btn-primary" %>
+        <%= link_to users_betrayed_path, method: :patch, "data-confirm" => "本当に寝返りますか？", class: "btn btn-danger" do %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>
+  

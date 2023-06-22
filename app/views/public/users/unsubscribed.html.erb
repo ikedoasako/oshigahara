@@ -1,2 +1,18 @@
-<h1>Public::Users#unsubscribed</h1>
-<p>Find me in app/views/public/users/unsubscribed.html.erb</p>
+<div class="container mt-5">
+  <h3><strong>本当に退会しますか？</strong></h3>
+  <p></p>
+  <div class="row justify-content-center">
+  <h5><strong>退会</strong>すると「会員登録情報」や、  これまでの「投稿」<br>
+  「コメント」履歴が<strong>削除</strong>されます。<br>
+  また、「投稿」や「コメント」を行うことができなくなります。<br>
+  <strong>退会</strong>する場合は、「<strong>退会</strong>する」をクリックしてください。</h5><br />
+  </div>
+  <div class="row">
+    <div class="col-sm-2 offset-4">
+      <%= link_to "退会しない", users_my_page_path, class: "btn btn-primary" %>
+    </div>
+      <%= link_to users_withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" do %>
+      退会する
+      <% end %>
+  </div>
+</div>
