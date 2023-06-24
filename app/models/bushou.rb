@@ -3,6 +3,7 @@ class Bushou < ApplicationRecord
   has_one_attached :image
   has_many :users, dependent: :destroy
   has_many :posts, dependent: :destroy
+  has_many :betrays, dependent: :destroy
 
   def get_image(width, height)
     unless image.attached?

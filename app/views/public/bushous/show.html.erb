@@ -1,2 +1,12 @@
-<h1>Public::Bushous#show</h1>
-<p>Find me in app/views/public/bushous/show.html.erb</p>
+<div class="container mt-5">
+  <h3>武将詳細</h3>
+  <div class="row justify-content-left">
+    <div class="col-sm-3">
+      <%= image_tag @bushou.get_image(200,200) %><br>
+      <%= @bushou.bushou_name %>
+    </div>
+    <div class="col-sm-8">
+      <%= @bushou.explanation %>
+    </div>
+  </div>
+</div>

@@ -20,16 +20,13 @@ class Public::UsersController < ApplicationController
   end
 
   def betray
-    @user = current_user
+    #@user = User.new(user_params)
+    @user =current_user
+
   end
 
   def betrayed
-    @user =current_user
-    if @user.update(user_params)
-      redirect_to users_my_page_path
-    else
-      render :edit
-    end
+    #ページ表示するだけ
   end
 
   def unsubscribed
