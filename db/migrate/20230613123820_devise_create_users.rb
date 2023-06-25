@@ -33,8 +33,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       # t.datetime :locked_at
 
       #カラムを追加
-      t.integer :bushou_id, null: false
       t.integer :old_bushou_id
+      t.integer :bushou_id, null: false
       t.string :name, null: false
       t.boolean :is_deleted, null: false, default: false
 

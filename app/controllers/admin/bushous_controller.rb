@@ -8,7 +8,6 @@ class Admin::BushousController < ApplicationController
 
   def create
     @bushou = Bushou.new(bushou_params)
-    #binding.pry
     if @bushou.save
       flash[:notice] = "You have created bushou successfully"
       redirect_to admin_bushous_path(@bushou)

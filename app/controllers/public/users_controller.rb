@@ -1,14 +1,15 @@
 class Public::UsersController < ApplicationController
-
   before_action :authenticate_user!
 
   def show
     @user = current_user
   end
 
+
   def edit
     @user = current_user
   end
+
 
   def update
     @user = current_user
@@ -19,25 +20,27 @@ class Public::UsersController < ApplicationController
     end
   end
 
-  def betray
-    #@user = User.new(user_params)
-    @user =current_user
 
+  def betray
+    @user =current_user
   end
 
+
   def betrayed
-    #ページ表示するだけ
     @user = current_user
     user_betray_params = user_params
     user_betray_params[:old_bushou_id] = @user.bushou_id
+    
     unless @user.update(user_betray_params)
       render :betray
     end
   end
 
+
   def unsubscribed
     @user = current_user
   end
+
 
   def withdraw
     @user = current_user
@@ -47,10 +50,11 @@ class Public::UsersController < ApplicationController
     redirect_to root_path
   end
 
+
   private
+
 
   def user_params
       params.require(:user).permit(:bushou_id, :name, :email, :is_deleted, :old_bushou_id)
   end
-
 end
