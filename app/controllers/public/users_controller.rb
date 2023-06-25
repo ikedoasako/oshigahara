@@ -27,6 +27,12 @@ class Public::UsersController < ApplicationController
 
   def betrayed
     #ページ表示するだけ
+    @user = current_user
+    user_betray_params = user_params
+    user_betray_params[:old_bushou_id] = @user.bushou_id
+    unless @user.update(user_betray_params)
+      render :betray
+    end
   end
 
   def unsubscribed
@@ -44,7 +50,7 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-      params.require(:user).permit(:bushou_id, :name, :email, :is_deleted)
+      params.require(:user).permit(:bushou_id, :name, :email, :is_deleted, :old_bushou_id)
   end
 
 end

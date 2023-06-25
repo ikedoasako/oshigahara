@@ -34,6 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
 
       #カラムを追加
       t.integer :bushou_id, null: false
+      t.integer :old_bushou_id
       t.string :name, null: false
       t.boolean :is_deleted, null: false, default: false
 
