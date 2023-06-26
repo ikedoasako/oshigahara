@@ -5,7 +5,7 @@ class Admin::UsersController < ApplicationController
   def index
     @users = User.all
     @users = User.page(params[:page])
-    
+
   end
 
   def show
@@ -18,7 +18,7 @@ class Admin::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update!(user_params)
+    if @user.update(user_params)
       flash[:notice] = "編集しました"
       redirect_to admin_users_path
     else
@@ -29,6 +29,6 @@ class Admin::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :is_deleted)
+    params.require(:user).permit(:name, :email, :is_deleted, :bushou_id)
   end
 end

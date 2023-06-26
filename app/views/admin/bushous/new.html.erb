@@ -3,7 +3,7 @@
   <%= form_with model: @bushou, url: admin_bushous_path, method: :post do |f| %>
   <div class="row">
 
-    <div class="form-group col-md-10">
+    <div class="form-group col-sm-10">
       <%= f.label "武将画像", class: "col-sm-3" %>
       <%= f.file_field :image, accept: "image/*", placeholder: "ファイルを選択" %>
     </div>
