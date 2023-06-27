@@ -5,6 +5,7 @@ class CreateComments < ActiveRecord::Migration[6.1]
       #カラムを追加
       t.integer :user_id, null: false
       t.integer :post_id, null: false
+      t.text :comment, null: false
 
       t.timestamps
     end

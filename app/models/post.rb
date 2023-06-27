@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
 
-  has_many_attached :image
+  has_one_attached :image
   belongs_to :user
-  belongs_to :busyou
-
+  belongs_to :bushou
+  has_many :comments, dependent: :destroy
 end

@@ -1,38 +1,45 @@
 class Public::PostsController < ApplicationController
-  
+
   def new
     @post = Post.new
-    
   end
-  
   
   def create
     @post = Post.new(post_params)
+    @post.user_id = current_user.id
+    @user = current_user
     if @post.save
         flash[:notice] = "投稿しました"
-       redirect_to posts_path
+       redirect_to post_path(@post.id)
     else
-       render :new
+       @posts = Post.all
+       render :index
     end
   end
-  
-  
+
   def index
     @posts = Post.all
+    @post = Post.new
+    @user = current_user
   end
 
-
   def show
-    @post = Post.find(params[:id])  
+    @post = Post.find(params[:id])
   end
 
 
   def edit
     @post = Post.find(params[:id])
+    unless current_user.id == @post.user_id
+        redirect_to posts_path
+    end
   end
-  
+
   def update
     @post = Post.find(params[:id])
+    unless current_user.id == @post.user_id
+      redirect_to users_my_page_path
+    end
     if @post.update(post_params)
        flash[:notice] = "編集しました"
        redirect_to posts_path
@@ -40,11 +47,17 @@ class Public::PostsController < ApplicationController
        render :edit
     end
   end
-  
-  private
-  
-  def post_params
-    params.require(:post).permit(:title, :body, :bushou_id, :user_id)
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to posts_path
   end
-  
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :body, :bushou_id, :image)
+  end
+
 end
