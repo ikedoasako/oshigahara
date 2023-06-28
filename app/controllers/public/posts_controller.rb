@@ -9,7 +9,7 @@ class Public::PostsController < ApplicationController
     @post.user_id = current_user.id
     @user = current_user
     if @post.save
-        flash[:notice] = "投稿しました"
+        flash[:notice] = "攻め入りました"
        redirect_to post_path(@post.id)
     else
        @posts = Post.all

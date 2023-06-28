@@ -1,0 +1,52 @@
+<div class="col-sm-4">
+  <h4>投稿者</h4>
+   <table class= "table">
+      <tbody>
+        <tr>
+          <th>ユーザー名</th>
+          <th><%= user.name %></th>
+        </tr>
+        <tr>
+          <th>所属軍</th>
+          <th><%= user.bushou.bushou_name %></th>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row">
+      <a>
+        <%= link_to users_information_edit_path, class: "btn btn-outline-secondary" do %>
+        <i class="fas fa-user-cog"></i>
+        <% end %>
+      </a>
+    </div>
+
+    <div class="row">
+    <h6>推しについて投稿しよう！</h6>
+    <%= form_with model: Post.new do |f| %>
+      <div class="form_group">
+        <%= f.label "武将選択" %>
+        <%= f.collection_select :bushou_id,  Bushou.all, :id, :bushou_name %>
+      </div>
+
+      <div class="form-group">
+          <%= f.label "画像" %>
+          <%= f.file_field :image, accept: "image/*", placeholder: "ファイルを選択" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "タイトル" %>
+        <%= f.text_field :title %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "本文" %>
+        <%= f.text_area :body %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "投稿する" %>
+        <%= f.submit '攻め入る!', class: "btn btn-success" %>
+      </div>
+    <% end %>
+    </div>
+</div>
