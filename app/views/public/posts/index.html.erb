@@ -1,12 +1,12 @@
-<div class="container px-5 px-sm-0" >
+<div class="container mt-5">
   <div class= "row">
     <%= render 'list', posts: @posts, user: @user %>
-    <div class="col-sm-7 offset-sm-1">
+    <div class="col-sm-9">
+      <h5>攻め入り一覧</h5>
       <table class="table">
         <thead>
           <tr>
             <th>投稿者</th>
-            <th></th>
             <th>タイトル</th>
             <th>本文</th>
           </tr>
@@ -17,8 +17,8 @@
             <td><%= link_to users_my_page_path(post.user.id) do %>
                 <%= @user.name %>
                 <% end %>
-            </td>
-            <td><%= @user.bushou.bushou_name %></td>
+                <%= @user.bushou.bushou_name %>
+            </th>
             <td><%= link_to post.title, post_path(post.id)%></td>
             <td><%= post.body %></td>
           </tr>

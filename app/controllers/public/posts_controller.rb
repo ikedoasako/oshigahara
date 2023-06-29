@@ -3,11 +3,11 @@ class Public::PostsController < ApplicationController
   def new
     @post = Post.new
   end
-  
+
   def create
+    @user = current_user
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @user = current_user
     if @post.save
         flash[:notice] = "攻め入りました"
        redirect_to post_path(@post.id)
@@ -25,6 +25,7 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @user = @post.user
   end
 
 
@@ -57,7 +58,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :bushou_id, :image)
+    params.require(:post).permit(:title, :body, :bushou_id, :user_id, :image)
   end
 
 end
