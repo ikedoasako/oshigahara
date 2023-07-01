@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :users
     resources :bushous
     resources :comments, only: [:index, :show, :destroy]
-    resources :posts, only: [:index, :show, :edit, :update]
+    resources :posts, only: [:index, :show, :destroy]
   end
 
 
