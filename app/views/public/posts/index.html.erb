@@ -1,24 +1,27 @@
 <p id="notice"><%= flash[:notice] %></p>
 <div class="container mt-5">
   <div class= "row">
-    <%= render 'list', posts: @posts, user: @user %>
+    <div class="col-md-3">
+      <%= render 'list', posts: @posts, user: @user %>
+    </div>
     <div class= "col-md-8 offset-md-1">
-      <h3>攻め入り一覧</h3>
+      <h3>攻め入り！<h6>投稿一覧</h6></h3>
       <table class="table">
         <thead>
           <tr>
-            <th></th>
-            <th>タイトル</th>
+            <th class="text-nowrap pr-lg-5">ユーザー名</th>
+            <th class="text-nowrap pr-lg-5">タイトル</th>
             <th>本文</th>
           </tr>
         </thead>
         <tbody>
           <% @posts.each do |post| %>
           <tr>
-            <td><%= link_to bushou_path(post.user.bushou_id) do %>
+            <td>
+              <%= link_to bushou_path(post.user.bushou_id) do %>
                 <%= image_tag post.user.bushou.get_image(80,80) %><br>
-                <% end %>
-                <%= post.user.name %>
+              <% end %>
+              <%= post.user.name %>
             </td>
             <td><%= link_to post.title, post_path(post.id)%></td>
             <td><%= post.body %></td>

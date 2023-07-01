@@ -1,14 +1,16 @@
 <div class="container mt-5">
   <div class= "row">
-    <%= render 'list', posts: @posts, user: @user %>
+    <div class="col-md-3">
+      <%= render 'list', posts: @posts, user: current_user %>
+    </div>
     <div class= "col-md-8 offset-md-1">
       <h3>合戦！<h6>投稿内容詳細</h6></h3>
       <table class="table">
         <thead>
           <tr>
-            <th>投稿者名</th>
-            <th>所属軍</th>
-            <th>タイトル</th>
+            <th class="text-nowrap pr-lg-5">投稿者名</th>
+            <th class="text-nowrap pr-lg-5">所属軍</th>
+            <th class="text-nowrap pr-lg-5">タイトル</th>
             <th>本文</th>
           </tr>
         </thead>
