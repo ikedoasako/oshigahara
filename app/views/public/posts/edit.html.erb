@@ -1,2 +1,32 @@
-<h1>Public::Posts#edit</h1>
-<p>Find me in app/views/public/posts/edit.html.erb</p>
+<div class="container" >
+  <h4>合戦内容の編集</h4>
+  <%= form_with model: @post, url: post_path, method: :patch do |f| %>
+
+  <div class="row justify-content-center">
+    <div class="form-group col-sm-8">
+      <%= f.label "ユーザー名" %>
+      <%= @post.user.name %>
+    </div>
+    <div class="form-group col-sm-8">
+      <%= f.label "所属軍" %>
+      <%= @post.user.bushou.bushou_name %>
+    </div>
+    <div class="form-group col-sm-8">
+      <%= f.label "武将画像" %>
+      <%= f.file_field :image, accept: "image/*", placeholder: "ファイルを選択" %>
+    </div>
+    <div class="form-group col-sm-8">
+      <%= f.label "タイトル" %>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+    <div class="form-group col-sm-8">
+      <%= f.label "本文" %>
+      <%= f.text_area :body, class: "form-control" %>
+    </div>
+    <div class="col-sm-5 offset-3">
+      <%= f.submit "変更を保存", class: "btn btn-success" %>
+    </div>
+  </div>
+
+  <% end %>
+</div>

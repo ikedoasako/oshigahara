@@ -1,2 +1,30 @@
-<h1>Public::Posts#show</h1>
-<p>Find me in app/views/public/posts/show.html.erb</p>
+<div class="container mt-5">
+  <div class= "row">
+    <%= render 'list', posts: @posts, user: @user %>
+    <div class= "col-md-8 offset-md-1">
+      <h3>合戦！<h6>投稿内容詳細</h6></h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>投稿者名</th>
+            <th>所属軍</th>
+            <th>タイトル</th>
+            <th>本文</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= link_to @user.name, users_my_page_path %></td>
+            <td><%= @user.bushou.bushou_name %></td>
+            <td><%= @post.title %></td>
+            <td><%= @post.body %></td>
+            <% if @post.user == current_user %>
+            <td><%= link_to "編集する", edit_post_path(@post.id), class: "btn btn-outline-success" %></td>
+            <td><%= link_to "削除する", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %></td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

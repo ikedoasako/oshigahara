@@ -1,12 +1,13 @@
+<p id="notice"><%= flash[:notice] %></p>
 <div class="container mt-5">
   <div class= "row">
     <%= render 'list', posts: @posts, user: @user %>
-    <div class="col-sm-9">
-      <h5>攻め入り一覧</h5>
+    <div class= "col-md-8 offset-md-1">
+      <h3>攻め入り一覧</h3>
       <table class="table">
         <thead>
           <tr>
-            <th>投稿者</th>
+            <th></th>
             <th>タイトル</th>
             <th>本文</th>
           </tr>
@@ -14,11 +15,11 @@
         <tbody>
           <% @posts.each do |post| %>
           <tr>
-            <td><%= link_to users_my_page_path(post.user.id) do %>
-                <%= @user.name %>
+            <td><%= link_to bushou_path(post.user.bushou_id) do %>
+                <%= image_tag post.user.bushou.get_image(80,80) %><br>
                 <% end %>
-                <%= @user.bushou.bushou_name %>
-            </th>
+                <%= post.user.name %>
+            </td>
             <td><%= link_to post.title, post_path(post.id)%></td>
             <td><%= post.body %></td>
           </tr>
