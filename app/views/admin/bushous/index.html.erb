@@ -7,7 +7,7 @@
     <% @bushous.each do |bushou| %>
     <div class="col-sm-2">
       <p><%= link_to admin_bushou_path(bushou.id) do %>
-         <%= image_tag bushou.get_image(150,150) %>
+         <%= image_tag bushou.get_image(100,100) %>
          <% end %>
       </p>
       <p><%= bushou.id %></p>

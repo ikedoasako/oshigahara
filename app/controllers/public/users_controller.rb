@@ -31,7 +31,7 @@ class Public::UsersController < ApplicationController
     @user = current_user
     user_betray_params = user_params
     user_betray_params[:old_bushou_id] = @user.bushou_id
-
+    
     unless @user.update(user_betray_params)
       render :betray
     end
