@@ -26,6 +26,7 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = @post.user
+    @comment = Comment.new
   end
 
 
@@ -49,11 +50,17 @@ class Public::PostsController < ApplicationController
     end
   end
 
+  # def destroy
+  #   @post = Post.find(params[:id])
+  #   @post.destroy
+  #   redirect_to posts_path
+  # end
+  
   def destroy
-    @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to posts_path
+    Comment.find(params[:id]).destroy
+    redirect_to post_path(params[:post_id])
   end
+
 
   private
 

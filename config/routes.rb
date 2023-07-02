@@ -30,10 +30,12 @@ Rails.application.routes.draw do
     patch '/users/betrayed' => 'users#betrayed'
     get '/users/unsubscribed' => 'users#unsubscribed'
     patch '/users/withdraw' => 'users#withdraw'
+    get '/favorites' => 'favorites#index'
     resources :bushous, only: [:index, :show]
+    resource :favorites, only: [:create, :destroy]
+    resources :posts do
     resources :comments, only: [:create, :destroy]
-    resources :favorites, only: [:create, :destroy]
-    resources :posts
+    end
   end
 
   #devise_for :users

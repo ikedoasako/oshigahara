@@ -22,6 +22,7 @@
                 <%= image_tag post.user.bushou.get_image(80,80) %><br>
               <% end %>
               <%= post.user.name %>
+              <%= link_to "#{post.comments.count} ｺﾒﾝﾄ", post_path(post.id) %>
             </td>
             <td><%= link_to post.title, post_path(post.id)%></td>
             <td><%= post.body %></td>

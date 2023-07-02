@@ -1,18 +1,22 @@
-<h4>管理者ログイン</h4>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label "メールアドレス" %><br />
-    <%= f.email_field :email %>
-  </div>
+<div class="container mt-5">
+  <h4>管理者ログイン</h4>
+  <div class="row pt-5">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <div class="field">
-    <%= f.label "パスワード" %><br />
-    <%= f.password_field :password %>
-  </div>
+    <div class="form-group">
+      <label>メールアドレス</label>
+      <%= f.email_field :email, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <label>パスワード</label>
+      <%= f.password_field :password, class: "form-control" %>
+    </div>
+    <div class="form-group pt-3">
+      <%= f.submit "ログイン", class: "btn btn-primary btn-block" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "ログイン", class: "btn btn-primary" %>
+  <% end %>
   </div>
-<% end %>
+</div>
 
 <%= render "admin/shared/links" %>

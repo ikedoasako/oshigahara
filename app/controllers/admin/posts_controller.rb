@@ -1,14 +1,15 @@
 class Admin::PostsController < ApplicationController
   before_action :authenticate_admin!
 
-  def index
-    @posts = Post.all
-    @user = @posts.map(&:user)
-  end
+  # def index
+  #   @posts = Post.all
+  #   @user = @posts.map(&:user)
+  # end
 
 
   def show
     @post = Post.find(params[:id])
+    @user = @post.user
   end
 
 

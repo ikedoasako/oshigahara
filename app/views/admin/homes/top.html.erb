@@ -1,2 +1,28 @@
 管理者トップページ
-<h2>投稿履歴一覧画面</h2>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-10">
+      <h3>投稿履歴一覧</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>投稿日時</th>
+            <th>ユーザー名</th>
+            <th>タイトル</th>
+            <th>投稿削除</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @posts.each do |post| %>
+          <tr>
+            <td><%= link_to post.created_at.strftime("%Y-%m-%d %H:%M:%S"), admin_post_path(post.id) %></td>
+            <td><%= post.user.name %></td>
+            <td><%= post.title %></td>
+            <td><%= link_to "削除", admin_post_path(post.id),  method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
