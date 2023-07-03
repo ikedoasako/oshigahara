@@ -23,14 +23,20 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get 'homes/about' => 'homes#about', as: 'about'
-    get '/users/my_page' => 'users#show'
+    #get '/users/my_page' => 'users#show'
     get '/users/information/edit' => 'users#edit'
     patch '/users/information' => 'users#update'
     get '/users/betray' => 'users#betray'
     patch '/users/betrayed' => 'users#betrayed'
     get '/users/unsubscribed' => 'users#unsubscribed'
     patch '/users/withdraw' => 'users#withdraw'
-    get '/favorites' => 'favorites#index'
+
+    resources :users do
+      member do
+        get :favorites
+      end
+    end
+
     resources :bushous, only: [:index, :show]
     resource :favorites, only: [:create, :destroy]
     resources :posts do

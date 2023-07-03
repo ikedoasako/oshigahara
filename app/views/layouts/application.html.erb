@@ -31,7 +31,7 @@
                       <a class="text-white navbar-brand">ようこそ<%= current_user.name %>殿</a>
                     </il>
                     <il class="mx-2">
-                        <%= link_to "マイページ", users_my_page_path, class: "text-white navbar-brand" %>
+                        <%= link_to "マイページ", user_path(current_user), class: "text-white navbar-brand" %>
                     </il>
                     <il class="mx-2">
                         <%= link_to "武将一覧", bushous_path, class: "btn btn-outline-secondary" %>

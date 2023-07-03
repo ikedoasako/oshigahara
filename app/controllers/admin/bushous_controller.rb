@@ -9,7 +9,7 @@ class Admin::BushousController < ApplicationController
   def create
     @bushou = Bushou.new(bushou_params)
     if @bushou.save
-      flash[:notice] = "You have created bushou successfully"
+      flash[:notice] = "武将を登録しました"
       redirect_to admin_bushous_path(@bushou)
     else
       render :index
