@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <div class= "row">
     <div class="col-md-3">
-      <%= render 'list', posts: @posts, user: @user %>
+      <%= render 'list', posts: @posts, user: current_user %>
     </div>
     <div class= "col-md-8 offset-md-1">
       <h3>合戦！<h6>投稿内容詳細</h6></h3>

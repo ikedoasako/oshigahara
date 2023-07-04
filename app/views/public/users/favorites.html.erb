@@ -1,1 +1,25 @@
-favorites
+<div class="container mt-5">
+  <div class= "row">
+    <div class= "col-md-8 offset-md-1">
+      <h4>いいね一覧</h4>
+      <div class="mt-4 mb-3">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>投稿者</th>
+              <th>タイトル</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @favorite_posts.each do |post| %>
+            <tr>
+              <td><%= link_to post.user.name, user_path(post.user.id) %></td>
+              <td><%= link_to post.title, post_path(post.id) %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
