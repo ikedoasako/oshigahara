@@ -1,0 +1,15 @@
+<div class="container mt-5">
+  <div class= "row">
+    <div class= "col-md-10">
+      <h4>検索結果一覧</h4>
+      <div class="">
+        <% @posts.each do |post| %>
+          <ul class="mt-5 mb-4">
+            <p>タイトル</P>
+            <li><%= link_to post.title, post_path(post.id) %></li>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

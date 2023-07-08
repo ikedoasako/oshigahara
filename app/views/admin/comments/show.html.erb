@@ -1,15 +1,42 @@
 <div class="container mt-5">
   <div class= "row">
-    <div class= "col-md-8 offset-md-1">
+    <div class= "col-md-10">
+      <h4>コメントされた投稿</h4>
+      <div class="mt-4 mb-5">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="text-nowrap pr-lg-5">投稿者</th>
+              <th class="text-nowrap pr-lg-5">タイトル</th>
+              <th>投稿内容</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @comment.post.user.name %></td>
+              <td><%= @comment.post.title %></td>
+              <td><%= @comment.post.body %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-8 mt-5">
       <h4>コメント詳細</h4>
       <div class="mt-4 mb-5">
         <table class="table">
           <thead>
             <tr>
-              <th>投稿者</th>
-              
+              <th class="text-nowrap pr-lg-5">コメントしたユーザー</th>
+              <th class="text-nowrap pr-lg-5">コメント内容</th>
             </tr>
           </thead>
+          <tbody>
+            <tr>
+              <td><%= link_to @comment.user.name, admin_user_path(@comment.user.id) %></td>
+              <td><%= @comment.comment %></td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>

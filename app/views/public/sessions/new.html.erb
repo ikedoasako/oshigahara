@@ -1,29 +1,30 @@
 <div class="container mt-5">
-  <h2>ログイン</h2>
   <div class= "row">
-    <div class="col-md-6">
+    <div class="mt-2">
+      <h3>ログイン</h3>
+    </div>
+    <div class="col-md-8">
+      
       <div class="pt-6 mb-6">
-        <h5><strong>会員の方は此方より</strong></h5>
-
-        <%#= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <h5><strong>会員の方はこちら</strong></h5>
         <%= form_with model: @user, url: user_session_path, method: :post do |f| %>
         <div class="form-group">
           <label> メールアドレス</lavel>
           <%= f.email_field :email, class: "form-control" %>
         </div>
-
+  
         <div class="form-group">
           <label>パスワード</label>
           <%= f.password_field :password, class: "form-control" %>
         </div>
-
-        <%# if devise_mapping.rememberable? %>
-        <!--  <div class="form-group">-->
-            <%#= f.check_box :remember_me %>
-            <%#= f.label :remember_me %>
-        <!--  </div>-->
-        <%# end %>
-
+  
+          <%# if devise_mapping.rememberable? %>
+          <!--  <div class="form-group">-->
+              <%#= f.check_box :remember_me %>
+              <%#= f.label :remember_me %>
+          <!--  </div>-->
+          <%# end %>
+  
         <div class="actions">
           <%= f.submit "出陣", class: "btn btn-primary btn-block" %>
         </div>

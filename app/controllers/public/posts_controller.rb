@@ -60,6 +60,12 @@ class Public::PostsController < ApplicationController
     Comment.find(params[:id]).destroy
     redirect_to post_path(params[:post_id])
   end
+  
+  def search
+    #formで取得したパラメータをモデルに渡す
+    @posts = Post.search(params[:search])
+  end
+
 
 
   private

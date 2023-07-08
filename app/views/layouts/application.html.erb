@@ -24,65 +24,74 @@
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="navbar-collapse collapse show" id="navbarNavDropdown">
+
               <ul class="navbar-nav ml-auto">
                 <% if user_signed_in? %>
                 <!--会員がログインしていたら-->
-                    <il class="mx-4">
-                      <a class="text-white navbar-brand">ようこそ<%= current_user.name %>殿</a>
+                    <il class="pr-2">
+                      <a class="text-white navbar-brand">ようこそ<%= current_user.name %>さん</a>
                     </il>
-                    <il class="mx-2">
-                        <%= link_to "マイページ", user_path(current_user), class: "text-white navbar-brand" %>
+                    <il class="pr-3">
+                        <%= link_to "マイページ", user_path(current_user), class: "text-white" %>
                     </il>
-                    <il class="mx-2">
-                        <%= link_to "武将一覧", bushous_path, class: "btn btn-outline-secondary" %>
+                    <il class="pr-3">
+                        <%= link_to "武将一覧", bushous_path, class: "text-white" %>
                     </il>
-                    <il class="mx-2">
-                        <%= link_to "投稿一覧", posts_path, class: "btn btn-outline-secondary" %>
+                    <il class="pr-3">
+                        <%= link_to "投稿一覧", posts_path, class: "text-white" %>
                     </il>
-                    <li class="mx-2">
-                        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary" %>
+                    <li class="pr-3">
+                        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %>
                     </li>
 
                 <% elsif admin_signed_in? %>
                 <!--管理者がログインしていたら-->
-                    <il class="mx-2">
+                    <il class="pr-2">
                         <%= link_to "武将一覧", admin_bushous_path, class: "btn btn-outline-info" %>
                     </il>
-                    <il class="mx-2">
+                    <il class="pr-2">
                         <%= link_to "会員一覧", admin_users_path, class: "btn btn-outline-info" %>
                     </il>
-                    <il class="mx-2">
+                    <il class="pr-2">
                         <%= link_to "投稿履歴", admin_path, class: "btn btn-outline-info" %>
                     </il>
-                    <il class="mx-2">
+                    <il class="pr-2">
                         <%= link_to "コメント履歴", admin_comments_path, class: "btn btn-outline-info" %>
                     </il>
-                    <il class="mx-2">
+                    <il class="pr-2">
                         <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-info" %>
                     </il>
+
                 <% else %>
                 <!--ログインしていなかったら-->
-                    <il class="mx-2">
+                    <il class="pr-2">
                         <%= link_to "このサイトについて", about_path, class: "btn btn-outline-secondary" %>
                     </il>
-                    <il class="mx-2">
+                    <il class="pr-2">
                         <%= link_to "武将一覧",  bushous_path, class: "btn btn-outline-secondary" %>
                     </il>
-                    <il class="mx-2">
+                    <il class="pr-2">
                         <%= link_to "投稿一覧", posts_path, class: "btn btn-outline-secondary" %>
                     </il>
-                    <li class="mx-2">
+                    <li class="pr-2">
                         <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-secondary" %>
                     </li>
-                    <li class="mx-2">
+                    <li class="pr-2">
                         <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-secondary" %>
                     </li>
                 <% end %>
               </ul>
+
             </div>
           </div>
         </nav>
       </header>
+      <div class="post_search mt-3 mb-4">
+        <%= form_with url: search_posts_path, method: :get, local: true do |f| %>
+          <%= f.text_field :search, placeholder: "キーワード検索"  %>
+          <%= f.submit '検索', class: "btn btn-outline-secondary" %>
+        <% end %>
+      </div>
       <%= yield %>
     </body>
   </header>

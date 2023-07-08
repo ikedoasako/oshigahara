@@ -46,7 +46,7 @@ class Public::SessionsController < Devise::SessionsController
 
     #falseだった場合、退会していないのでそのままログイン処理を実行
     unless @user.valid_password?(params[:user][:password])
-     redirect_to new_user_session_path
+     new_user_session_path
     end
   end
 
