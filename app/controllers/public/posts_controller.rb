@@ -10,7 +10,7 @@ class Public::PostsController < ApplicationController
     @post.user_id = current_user.id
     #byebug
     #〜複数タグを持たせるための追記〜
-    tag_id_lists=params[:post][:tag_ids].compact.reject(&:empty?)
+    tag_id_lists = params[:post][:tag_ids].compact.reject(&:empty?)
     # ["", "1", "2"] → ["1", "2"]
     #受け取った値を加工する
 
@@ -83,12 +83,12 @@ class Public::PostsController < ApplicationController
 
 
   def destroy
-    # @post = Post.find(params[:id])
-    # @post.destroy
-    # redirect_to posts_path
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to posts_path
     
-    Comment.find(params[:id]).destroy
-    redirect_to post_path(params[:post_id])
+    # Comment.find(params[:id]).destroy
+    # redirect_to post_path(params[:post_id])
   end
 
   def search

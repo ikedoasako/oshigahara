@@ -4,15 +4,6 @@
 # )
 
 #〜タグ検索用の追記〜
-# Tag.create([
-#     { name: '織田信長' },
-#     { name: '上杉謙信' },
-#     { name: '伊達政宗'},
-#     { name: '真田幸村'},
-#     { name: '徳川家康'},
-#     { name: '豊臣秀吉'}
-#     ])
-
 Tag.create([
     { name: '戦国大名の城' },
     { name: '城主' },
@@ -32,6 +23,7 @@ Tag.create([
     { name: 'おすすめ'}
     ])
 #〜ここまで〜
+
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).

@@ -1,17 +1,23 @@
 <p id="notice"><%= flash[:notice] %></p>
+<div class="post_search mt-3 mb-4">
+  <%= form_with url: search_posts_path, method: :get, local: true do |f| %>
+    <%= f.text_field :search, placeholder: "キーワード検索"  %>
+    <%= f.submit '検索', class: "btn btn-outline-secondary" %>
+  <% end %>
+</div>
 <div class="container">
   <div class= "row">
     <div class="col-md-3">
       <%= render 'post', posts: @posts, user: current_user %>
     </div>
-    
+
     <div class= "col-md-8 offset-md-1">
       <%= form_tag posts_path, method: :get, class: 'boards__searchForm' do %>
         <%= select_tag :tag_id,
             options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
             { prompt: 'タグで絞り込み検索', onchange: 'submit(this.form);' } %>
         <% end %>
-        
+
       <div class="mt-4 mb-3">
         <h4>攻め入り！</h4>
         <table class="table">

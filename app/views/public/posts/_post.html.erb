@@ -41,7 +41,7 @@
 
     <!--タグ選択の追記　ここから-->
     <div class="check_box ">
-      <span>タグ</span>
+      <span>タグを選択</span>
       <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name)  do |tag| %>
       <div>
         <%= tag.label { tag.check_box + tag.text } %>

@@ -86,12 +86,6 @@
           </div>
         </nav>
       </header>
-      <div class="post_search mt-3 mb-4">
-        <%= form_with url: search_posts_path, method: :get, local: true do |f| %>
-          <%= f.text_field :search, placeholder: "キーワード検索"  %>
-          <%= f.submit '検索', class: "btn btn-outline-secondary" %>
-        <% end %>
-      </div>
       <%= yield %>
     </body>
   </header>
