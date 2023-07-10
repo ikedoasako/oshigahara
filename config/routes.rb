@@ -38,11 +38,11 @@ Rails.application.routes.draw do
     end
 
     resources :bushous, only: [:index, :show]
-    resource :favorites, only: [:create, :destroy]
     resources :posts do
       #postsコントローラーのsearchアクションにルーティングされる
       get :search, on: :collection
-    resources :comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
+      resources :comments, only: [:create, :destroy]
     end
   end
 

@@ -86,7 +86,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to posts_path
-    
+
     # Comment.find(params[:id]).destroy
     # redirect_to post_path(params[:post_id])
   end

@@ -27,7 +27,7 @@ class Post < ApplicationRecord
     current_tag_ids = self.tags.pluck(:id) unless self.tags.nil?
     # タグが存在していれば、タグの名前を配列として全て取得
     #unless~で「タグが存在してるか？」を確認している
-    old_tag_ids = current_tag_ids - sent_tag_ids
+    old_tag_ids = current_tag_ids - sent_tag_id
     # 既にタグがある状態で、新しくタグが送られてきたら、今あるタグは古いタグになる（old_tags）
     #新しく送られてきたタグの中に古いタグと同じものがあったら、そのタグだけ残して(current_tags)他はold_tagsに入る
 

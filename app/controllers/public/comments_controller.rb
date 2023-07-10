@@ -11,11 +11,11 @@ class Public::CommentsController < ApplicationController
 
   def destroy
     post = Post.find(params[:post_id])
-    comment = current_user.commentss.find_by(comment_id: comment.id)
+    comment = current_user.comments.find_by(id: params[:id])
     comment.destroy
     redirect_to post_path(post)
   end
-  
+
   private
 
   def comment_params
