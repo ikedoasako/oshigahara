@@ -10,5 +10,14 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.bushou_id = 1
+      # user.confirmed_at = Time.now
+      user.name = 'ゲスト'
+
+    end
+  end
 
 end

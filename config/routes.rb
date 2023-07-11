@@ -5,6 +5,11 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
+  
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+  
 # 管理者用
 # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
@@ -30,7 +35,10 @@ Rails.application.routes.draw do
     patch '/users/betrayed' => 'users#betrayed'
     get '/users/unsubscribed' => 'users#unsubscribed'
     patch '/users/withdraw' => 'users#withdraw'
-
+    
+    #ゲストログイン追加
+    # post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+    
     resources :users do
       member do
         get :favorites
