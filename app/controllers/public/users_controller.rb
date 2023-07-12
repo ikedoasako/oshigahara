@@ -1,6 +1,10 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
 
+  #〜ゲストユーザーの追記〜
+  before_action :ensure_normal_user, only: %i[update destroy]
+  #ゲストユーザーはユーザー情報の更新・削除は行えないように設定
+
   def show
     @user = User.find(params[:id])
     @posts = @user.posts
@@ -15,7 +19,7 @@ class Public::UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-        redirect_to users_path
+        redirect_to user_path(@user)
     else
      render :edit
     end
@@ -24,6 +28,7 @@ class Public::UsersController < ApplicationController
 
   def betray
     @user =current_user
+    @bushous = Bushou.where.not(id: @user.bushou_id)
   end
 
 
@@ -59,6 +64,13 @@ class Public::UsersController < ApplicationController
 
 
   private
+
+  #〜ゲストユーザーの追記〜
+  def ensure_normal_user
+    if current_user.email == 'guest@example.com'
+      redirect_to users_information_edit_path, alert: 'ゲストユーザーの更新・削除はできません。'
+    end
+  end
 
 
   def user_params

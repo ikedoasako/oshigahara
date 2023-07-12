@@ -18,5 +18,8 @@ module Oshigahara
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    
+    #〜バッチ処理の追加old_bushouの削除〜
+    config.paths.add 'lib', eager_load: true
   end
 end

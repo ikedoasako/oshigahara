@@ -10,12 +10,16 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
+  #〜ゲストユーザーの追加〜
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
+    #ゲストユーザーがあれば取り出す、なければ作成することができる
       user.password = SecureRandom.urlsafe_base64
+      #パスワードはランダム
       user.bushou_id = 1
-      # user.confirmed_at = Time.now
+      #ゲストユーザーにid(1)の武将を持たせる
       user.name = 'ゲスト'
+      #ユーザー名はゲストで登録
 
     end
   end

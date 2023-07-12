@@ -19,13 +19,14 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
   
-  #ゲストログイン
+  #〜ゲストログイン〜
   def guest_sign_in
     user = User.guest
     sign_in user
     redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
   end
-
+  #〜ここまで〜
+  
   protected
 
   def configure_sign_in_params
@@ -44,7 +45,7 @@ class Public::SessionsController < Devise::SessionsController
     #trueだった場合、退会しているのでサインアップ画面に戻す
     redirect_to new_user_registration_path
     end
-    #falseだった場合、退会していないのでそのままログイン処理を実行
+    #false��った場合、退会していないのでそのままログイン処理を実行
     unless @user.valid_password?(params[:user][:password])
      redirect_to new_user_session_path
     end
