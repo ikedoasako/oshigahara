@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2023_07_09_113548) do
   create_table "bushous", force: :cascade do |t|
     t.string "bushou_name", null: false
     t.text "explanation", null: false
+    t.integer "tally"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -104,8 +105,8 @@ ActiveRecord::Schema.define(version: 2023_07_09_113548) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "bushou_id", null: false
     t.integer "old_bushou_id"
+    t.integer "bushou_id", null: false
     t.string "name", null: false
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false

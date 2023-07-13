@@ -2,8 +2,8 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!
 
   #〜ゲストユーザーの追記〜
-  before_action :ensure_normal_user, only: %i[update destroy]
   #ゲストユーザーはユーザー情報の更新・削除は行えないように設定
+  before_action :ensure_normal_user, only: %i[update destroy]
 
   def show
     @user = User.find(params[:id])
@@ -28,6 +28,9 @@ class Public::UsersController < ApplicationController
 
   def betray
     @user =current_user
+    
+    #〜現在の武将を選択できないようにする設定〜
+    #今の武将idを除いた武将idを探してくる
     @bushous = Bushou.where.not(id: @user.bushou_id)
   end
 

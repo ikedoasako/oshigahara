@@ -2,17 +2,24 @@
   <h3>武将一覧</h3>
   <div class="row">
     <% @bushous.each do |bushou| %>
-    <div class="col-sm-2">
-      <p><%= link_to bushou_path(bushou.id) do %>
-         <%= image_tag bushou.get_image(150,150) %>
-         <% end %>
-      </p>
-      <p><%= bushou.bushou_name %></p>
-    </div>
+      <div class="col-sm-2">
+        <p><%= link_to bushou_path(bushou.id) do %>
+           <%= image_tag bushou.get_image(150,150) %>
+           <% end %>
+        </p>
+        <p><%= bushou.bushou_name %></p>
+      </div>
+      <div>
+        <%= "寝返った数:#{@turn_count[bushou.id]}" if @turn_count[bushou.id] %>
+      </div>
     <% end %>
   </div>
   <div class="row ustify-content-center">
     <%= paginate @bushous %>
   </div>
 </div>
+
+<div>
+  ポイント一位:
+  <%= @top_bushou.bushou_name %>
 </div>
