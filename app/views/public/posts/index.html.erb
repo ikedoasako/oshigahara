@@ -12,7 +12,7 @@
     </div>
     <div class= "col-md-8 offset-md-1">
       <%= form_tag posts_path, method: :get, class: 'boards__searchForm' do %>
-        <%= select_tag :tag_id,
+        <%= select_tag :tag_ids,
             options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
             { prompt: 'タグで絞り込み検索', onchange: 'submit(this.form);' } %>
         <% end %>
@@ -35,7 +35,6 @@
                   <%= image_tag post.user.bushou.get_image(80,80) %><br>
                 <% end %>
                 <%= post.user.name %>
-                <%= link_to "#{post.comments.count} ｺﾒﾝﾄ", post_path(post.id) %>
               </td>
               <td><%= link_to post.title, post_path(post.id)%></td>
               <td>
@@ -47,6 +46,7 @@
                 <%# end %>
                 <!--投稿についているタグを表示-->
                 <i class="fas fa-tag"><%= post.tags.map(&:name).join(', ') %></i>
+                <p>&nbsp;</p>
                 <!--いいね♡削除-->
                 <% if post.favorited_by?(current_user) %>
                   <%= link_to post_favorites_path(post_id: post), method: :delete do %>
@@ -54,12 +54,12 @@
                   <% end %>
                   <% else %>
                 <!--いいね♡つける-->
-                <p>
                   <%= link_to post_favorites_path(post_id: post), method: :post do %>
                     ♡<%= post.favorites.count %> いいね
                   <% end %>
-                </p>
                 <% end %>
+
+                <%= link_to "#{post.comments.count} ｺﾒﾝﾄ", post_path(post.id) %>
               </td>
             </tr>
             <% end %>

@@ -10,28 +10,8 @@ class Public::PostsController < ApplicationController
     @user = current_user
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    #byebug
-    #〜複数タグを持たせるための追記〜
-    tag_id_lists = params[:post][:tag_ids].compact.reject(&:empty?)
-    # ["", "1", "2"] → ["1", "2"]
-    #受け取った値を加工する
-
-    post_tag = @post.post_tags.build
-
-    #タグで入力した値を収めている（tag_id_lists)
-    tag_id_lists.each do |tag_id|
-      #中間テーブルの作成
-      #post_tag = PostTag.new(tag_id: ~~~)と同じ
-      post_tag.tag = Tag.find_by(id: tag_id.to_i)
-    end
 
     if @post.save
-      tag_id_lists.each do |tag_id|
-        #余分な中間テーブルの作成
-        if PostTag.where(post_id: @post.id, tag_id: tag_id).count >= 2
-          PostTag.find_by(post_id: @post.id, tag_id: tag_id).delete
-        end
-      end
       flash[:notice] = "攻め入りました"
       redirect_to post_path(@post.id)
     else
@@ -88,9 +68,6 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to posts_path
-
-    # Comment.find(params[:id]).destroy
-    # redirect_to post_path(params[:post_id])
   end
 
   def search

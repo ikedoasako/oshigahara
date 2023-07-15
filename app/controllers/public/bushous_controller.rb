@@ -5,7 +5,7 @@ class Public::BushousController < ApplicationController
     @bushous = Bushou.all
     @top_bushou = @bushous.order(tally: :desc).first
     @turn_count = User.group(:old_bushou_id).count.reject{|k, v| k == nil }
-    @bushous = Bushou.page(params[:page])
+    
   end
 
   def show

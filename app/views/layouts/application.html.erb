@@ -16,14 +16,13 @@
     <body class="d-flex flex-column vh-100">
       <header class="shadow-sm">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <div class="container">
             <a class="navbar-brand" href="/">
               <span>推しヶ原の戦い</span>
             </a>
-            <button class="navbar-toggler" type="button" date-toggle="collapse" data-target="#navbarNavDropdown" aria-controls= "navbarNavDropdown" aria-expanded="false" arialabel="Toogle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="navbar-collapse collapse show" id="navbarNavDropdown">
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
               <ul class="navbar-nav ml-auto">
                 <% if user_signed_in? %>
@@ -65,19 +64,19 @@
                 <% else %>
                 <!--ログインしていなかったら-->
                     <il class="pr-2">
-                        <%= link_to "このサイトについて", about_path, class: "btn btn-outline-secondary" %>
+                        <%= link_to "このサイトについて", about_path, class: "btn btn-outline-secondary text-lightgreen" %>
                     </il>
                     <il class="pr-2">
-                        <%= link_to "武将一覧",  bushous_path, class: "btn btn-outline-secondary" %>
+                        <%= link_to "武将一覧",  bushous_path, class: "btn btn-outline-secondary text-lightgreen" %>
                     </il>
                     <il class="pr-2">
-                        <%= link_to "投稿一覧", posts_path, class: "btn btn-outline-secondary" %>
+                        <%= link_to "投稿一覧", posts_path, class: "btn btn-outline-secondary text-hoge" %>
                     </il>
                     <li class="pr-2">
-                        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-secondary" %>
+                        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-secondary text-white" %>
                     </li>
                     <li class="pr-2">
-                        <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-secondary" %>
+                        <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-secondary text-white" %>
                     </li>
                     <li class="pr-2">
                         <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
@@ -86,7 +85,6 @@
               </ul>
 
             </div>
-          </div>
         </nav>
       </header>
       <%= yield %>
