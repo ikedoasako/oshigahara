@@ -1,4 +1,10 @@
-ja
+ja:
+  activerecord:
+    attributes:
+      user:
+        email: "めーる"
+      comment:
+        comment: "コメント本文"
   views:
     pagination:
       first: "≪"

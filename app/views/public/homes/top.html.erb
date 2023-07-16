@@ -4,7 +4,7 @@
       <h4 class="mb-5">攻め入り</h4>
       <div>
         <% @posts.each do |post| %>
-          <p class="mb-4"><%= link_to bushou_path(post.user.bushou_id) do %>
+          <p class="mb-3"><%= link_to bushou_path(post.user.bushou_id) do %>
              <% post.user.bushou.bushou_name %>
              <% end %>
              軍
@@ -19,7 +19,7 @@
         <% @bushous.each do |bushou| %>
         <div class="mx-3">
           <p>
-            <%= link_to bushous_path do %>
+            <%= link_to bushou_path(bushou.id) do %>
             <%= image_tag bushou.get_image(150,150) %>
             <% end %>
           </p>

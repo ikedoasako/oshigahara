@@ -1,7 +1,9 @@
+<%= render "/layouts/error_messages", model: @comment %>
+
 <div class="container mt-5">
   <div class= "row">
     <div class="col-md-3">
-      <%= render 'post', posts: @posts, user: current_user %>
+      <%= render '/public/posts/post', posts: @posts, user: current_user %>
     </div>
     <div class= "col-md-8 offset-md-1">
       <h3>合戦！<h6>投稿内容詳細</h6></h3>
