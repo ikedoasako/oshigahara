@@ -21,14 +21,16 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
     @post = Post.new
     @user = current_user
 
-    #タグ検索機能の追記
-    @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
-                                        #tag_idの登録があったらTagモデルと関連付けしたpostsから持ってくる
-                                        #tag_idがなかったら全ての投稿を表示させる
+    #タグ検索機能・ページネーション追加
+    if params[:tag_id].present?
+      tag = Tag.find(params[:tag_id])
+      @posts = tag.posts.page(params[:page])
+    else
+      @posts = Post.page(params[:page]).reverse_order
+    end
     #複数タグの追記
     @tag_list=Tag.all
   end

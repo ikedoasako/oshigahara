@@ -1,42 +1,31 @@
-<h2>新規会員登録</h2>
-
-<%= form_with model: @user, url: user_registration_path, method: :post do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
-
-    <div class="form_group">
-      <%= f.label "所属軍"%>
-      <%= f.collection_select :bushou_id, Bushou.all, :id, :bushou_name %>
-    </div>
-    <div class="field">
-      <%= f.label "ユーザー名" %>
-      <%= f.text_field :name %>
-    </div>
-    <div class="field">
-      <%= f.label "メールアドレス" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
-    <div class="field">
-      <%= f.label "パスワード" %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> 文字以上)</em>
+<div class="container mt-5">
+  <div class= "row">
+    <div class="col-md-8 offset-2 text-center">
+      <h5 class="mt-5 mb-5"><strong>新規会員登録</strong></h5>
+      <%= form_with model: @user, url: user_registration_path, method: :post do |f| %>
+        <%= render "public/shared/error_messages", resource: resource %>
+        
+        <div class="form-group w-50 d-inline-block text-left">
+          <label>所属軍</label>
+            <%= f.collection_select :bushou_id, Bushou.all, :id, :bushou_name, { include_blank: "--選択してください--"}, { class: "form-control" } %>
+          <label class="pt-3">ユーザー名</label>
+            <%= f.text_field :name, class: "form-control" %>
+          <label class="pt-3">メールアドレス</label>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+          <label class="pt-3">パスワード</label>
+            <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> 文字以上)</em>
+            <% end %>
+            <%= f.password_field :password, class: "form-control" %>
+          <label class="pt-3">パスワード（確認用）</label>
+            <%= f.password_field :password, class: "form-control" %>
+            <%= f.submit "新規登録", class: "mt-4 btn btn-primary btn-block" %>
+        </div>
       <% end %>
-      <%= f.password_field :password %>
+      <div class="pt-5 mb-5">
+        <h5 class="mb-4"><strong>会員登録</strong>がお済みの方は</h5>
+        <h5>こちらから<%= link_to "ログイン", new_user_session_path %>してください。</h5>
+      </div>
     </div>
-
-    <div class="field">
-      <%= f.label "パスワード（確認用）" %>
-      <%= f.password_field :password %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "新規登録" %>
-    </div>
-  <% end %>
-
-  <div class="row">
-    <p></p>
-    <p>既に登録済みでしたか？<br />
-      此方より<br />
-      <%= link_to "ログイン", new_user_session_path %>
-      してください。</p>
   </div>
+</div>

@@ -7,6 +7,8 @@ class Admin::HomesController < ApplicationController
       @user << post.user
     end
     #@user = @posts.map(&:user)
+    
+    @posts = Post.page(params[:page]).reverse_order
   end
 
 end

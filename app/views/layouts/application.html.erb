@@ -46,40 +46,40 @@
                 <% elsif admin_signed_in? %>
                 <!--管理者がログインしていたら-->
                     <il class="pr-2">
-                        <%= link_to "武将一覧", admin_bushous_path, class: "btn btn-outline-info" %>
+                        <%= link_to "武将一覧", admin_bushous_path, class: "text-paleturquoise" %>
                     </il>
                     <il class="pr-2">
-                        <%= link_to "会員一覧", admin_users_path, class: "btn btn-outline-info" %>
+                        <%= link_to "会員一覧", admin_users_path, class: "text-paleturquoise" %>
                     </il>
                     <il class="pr-2">
-                        <%= link_to "投稿履歴", admin_path, class: "btn btn-outline-info" %>
+                        <%= link_to "投稿履歴", admin_path, class: "text-paleturquoise" %>
                     </il>
                     <il class="pr-2">
-                        <%= link_to "コメント履歴", admin_comments_path, class: "btn btn-outline-info" %>
+                        <%= link_to "コメント履歴", admin_comments_path, class: "text-paleturquoise" %>
                     </il>
                     <il class="pr-2">
-                        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-info" %>
+                        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "text-paleturquoise" %>
                     </il>
 
                 <% else %>
                 <!--ログインしていなかったら-->
                     <il class="pr-2">
-                        <%= link_to "このサイトについて", about_path, class: "btn btn-outline-secondary text-lightgreen" %>
+                        <%= link_to "このサイトについて", about_path, class: "text-white" %>
                     </il>
                     <il class="pr-2">
-                        <%= link_to "武将一覧",  bushous_path, class: "btn btn-outline-secondary text-lightgreen" %>
+                        <%= link_to "武将一覧",  bushous_path, class: "text-white" %>
                     </il>
                     <il class="pr-2">
-                        <%= link_to "投稿一覧", posts_path, class: "btn btn-outline-secondary text-hoge" %>
+                        <%= link_to "投稿一覧", posts_path, class: "text-white" %>
                     </il>
                     <li class="pr-2">
-                        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-secondary text-white" %>
+                        <%= link_to "新規登録", new_user_registration_path, class: "text-white" %>
                     </li>
                     <li class="pr-2">
-                        <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-secondary text-white" %>
+                        <%= link_to "ログイン", new_user_session_path, class: "text-white" %>
                     </li>
                     <li class="pr-2">
-                        <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
+                        <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "text-deepskyblue" %>
                     </li>
                 <% end %>
               </ul>

@@ -1,5 +1,8 @@
 require_relative "boot"
 
+#追記
+require 'rails-i18n'
+
 require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems

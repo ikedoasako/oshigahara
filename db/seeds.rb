@@ -1,7 +1,7 @@
-# Admin.create!(
-#   email: 'piyo@maru',## 任意のメールアドレス,
-#   password: 'qwertyu'## 任意のパスワード
-# )
+Admin.create!(
+  email: 'piyo@maru',## 任意のメールアドレス,
+  password: 'qwertyu'## 任意のパスワード
+)
 
 #〜タグ検索用の追記〜
 Tag.create([

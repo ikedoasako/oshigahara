@@ -1,8 +1,17 @@
 @use '~bootstrap/scss/bootstrap';
 
 .text-hoge {
-  // color: lightgreen !important;
+  color: lightgreen !important;
   // color: #ef9e33de !important;
   // color: rgb(77 179 185 / 87%) !important;
-  color: rgba(200,12,0,1) !important;
+  // color: rgba(200,12,0,1) !important;
 }
+
+.text-deepskyblue {
+  color: #00bfff !important;
+}
+
+.text-paleturquoise {
+  color: #afeeee !important;
+}
+
