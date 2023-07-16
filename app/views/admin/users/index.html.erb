@@ -1,38 +1,41 @@
 <div class="container mt-5">
-  <h4>会員一覧画面</h4>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>会員ID</th>
-        <th>ユーザー名</th>
-        <th>所属軍</th>
-        <th>メールアドレス</th>
-        <th>ステータス</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @users.each do |user| %>
-      <tr>
-        <td><%= user.id %></td>
-        <td><%= link_to user.name, admin_user_path(user.id) %></td>
-        <td><%= user.bushou.bushou_name %></td>
-        <td><%= user.email %></td>
-        <td class="text-secondary font-weight-bold">
-        <% if user.is_deleted? %>
-          退会
-        </td>
-          <% else %>
-        <p class="text-success font-weight-bold">
-          有効
-          <% end %>
-        </p>
-        <% end %>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="row justify-content-center">
-    <%= paginate @users %>
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h3 class="mb-4 text-left">会員一覧</h3>
+      <table class="table table-sm table-bordered table-hover">
+        <thead>
+          <tr class="table-info">
+            <th>会員ID</th>
+            <th>ユーザー名</th>
+            <th>所属軍</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= link_to user.name, admin_user_path(user.id) %></td>
+            <td><%= user.bushou.bushou_name %></td>
+            <td><%= user.email %></td>
+            <td class="text-secondary font-weight-bold">
+              <% if user.is_deleted? %>
+                退会
+            </td>
+              <% else %>
+            <p class="text-success font-weight-bold">
+                有効
+              <% end %>
+            </p>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+      <div class="row justify-content-center">
+        <%= paginate @users %>
+      </div>
+    </div>
   </div>
 </div>
+

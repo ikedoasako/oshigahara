@@ -25,8 +25,8 @@ class Public::PostsController < ApplicationController
     @user = current_user
 
     #タグ検索機能・ページネーション追加
-    if params[:tag_id].present?
-      tag = Tag.find(params[:tag_id])
+    if params[:tag_ids].present?
+      tag = Tag.find(params[:tag_ids])
       @posts = tag.posts.page(params[:page])
     else
       @posts = Post.page(params[:page]).reverse_order

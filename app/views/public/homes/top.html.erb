@@ -1,1 +1,32 @@
-トップページ
+<div class="container mt-5">
+  <div class= "row d-flex">
+    <div class="col-md-4">
+      <h4 class="mb-5">攻め入り</h4>
+      <div>
+        <% @posts.each do |post| %>
+          <p class="mb-4"><%= link_to bushou_path(post.user.bushou_id) do %>
+             <% post.user.bushou.bushou_name %>
+             <% end %>
+             軍
+             <%= post.user.name %>が攻め入りました
+          </p>
+          <% end %>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <h4 class="mb-5">戦国武将</h4>
+      <div class="d-flex flex-wrap">
+        <% @bushous.each do |bushou| %>
+        <div class="mx-3">
+          <p>
+            <%= link_to bushous_path do %>
+            <%= image_tag bushou.get_image(150,150) %>
+            <% end %>
+          </p>
+          <p><%= bushou.bushou_name %></p>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
