@@ -7,7 +7,6 @@ class Admin::PostsController < ApplicationController
   #   @user = @posts.map(&:user)
   # end
 
-
   def show
     @post = Post.find(params[:id])
     @user = @post.user
@@ -17,7 +16,7 @@ class Admin::PostsController < ApplicationController
   def destroy
     post = Post.find(params[:id])
     post.destroy
-    redirect_to admin_posts_path
+    redirect_to admin_path
   end
 
 
