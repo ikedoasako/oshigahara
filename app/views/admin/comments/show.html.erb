@@ -3,8 +3,8 @@
     <div class= "col-md-10">
       <h4>コメントされた投稿</h4>
       <div class="mt-4 mb-5">
-        <table class="table">
-          <thead>
+        <table class="table table-sm table-bordered">
+          <thead class="table-info">
             <tr>
               <th class="text-nowrap pr-lg-5">投稿者</th>
               <th class="text-nowrap pr-lg-5">タイトル</th>
@@ -21,20 +21,22 @@
         </table>
       </div>
     </div>
-    <div class="col-md-8 mt-5">
+    <div class="col-md-10 mt-5">
       <h4>コメント詳細</h4>
       <div class="mt-4 mb-5">
-        <table class="table">
-          <thead>
+        <table class="table table-sm table-bordered">
+          <thead class="table-success">
             <tr>
               <th class="text-nowrap pr-lg-5">コメントしたユーザー</th>
               <th class="text-nowrap pr-lg-5">コメント内容</th>
+              <th class="text-nowrap pr-lg-5">コメント削除</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><%= link_to @comment.user.name, admin_user_path(@comment.user.id) %></td>
               <td><%= @comment.comment %></td>
+              <td><%= link_to "削除", admin_comment_path(@comment.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %></td>
             </tr>
           </tbody>
         </table>

@@ -17,7 +17,7 @@
       <h4 class="mb-5">戦国武将</h4>
       <div class="d-flex flex-wrap">
         <% @bushous.each do |bushou| %>
-        <div class="mx-3">
+        <div class="mx-3 mb-5">
           <p>
             <%= link_to bushou_path(bushou.id) do %>
             <%= image_tag bushou.get_image(150,150) %>
