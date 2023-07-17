@@ -2,9 +2,9 @@ ja:
   activerecord:
     attributes:
       user:
-        email: "めーる"
+        email: "メールアドレス"
       comment:
-        comment: "コメント本文"
+        comment: "コメント内容"
   views:
     pagination:
       first: "≪"

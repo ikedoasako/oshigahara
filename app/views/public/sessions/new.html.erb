@@ -3,6 +3,7 @@
     <div class="col-md-8 offset-2 text-center">
       <h5 class="mt-5 mb-4"><strong>会員の方はこちら</strong></h5>
       <%= form_with model: @user, url: user_session_path, method: :post do |f| %>
+        <%= render "public/shared/error_messages", resource: resource %>
         <div class="form-group w-50 d-inline-block text-left">
           <label class="pt-3"> メールアドレス</label>
           <%= f.email_field :email, class: "form-control" %>

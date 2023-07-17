@@ -1,5 +1,4 @@
 class Public::PostsController < ApplicationController
-
   before_action :authenticate_user!
 
   def new
@@ -15,8 +14,8 @@ class Public::PostsController < ApplicationController
       flash[:notice] = "攻め入りました"
       redirect_to post_path(@post.id)
     else
-       @posts = Post.all
-       render :index
+       @posts = Post.page(params[:page]).reverse_order
+       render "/public/posts/index.html.erb"
     end
   end
 

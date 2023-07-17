@@ -6,6 +6,10 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
+  #タイトル・本文が空で投稿できないようにする
+  validates :title, presence: true
+  validates :body, presence: true
+
   #タグ検索機能の関連付け追加
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
