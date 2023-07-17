@@ -1,64 +1,64 @@
 <%= render "/layouts/error_messages", model: @comment %>
 
 <div class="container mt-5">
-  <div class= "row">
+  <div class= "row md-2">
     <div class="col-md-3">
       <%= render '/public/posts/post', posts: @posts, user: current_user %>
     </div>
-    <div class= "col-md-8 offset-md-1">
-      <h3>合戦！<h6>投稿内容詳細</h6></h3>
-      <table class="table">
-        <tbody>
-          <tr>
-            <td>タイトル:</td>
-            <td class="text-nowrap pr-lg-5"><%= @post.title %></td>
-          </tr>
-          <tr>
-            <td>投稿者名:</td>
-            <td class="text-nowrap pr-lg-5"><%= link_to @user.name, user_path(@post.user.id) %></td>
-          </tr>
-          <tr>
-            <td>武将名:</td>
-            <td class=><%= @post.bushou.bushou_name %></td>
-          </tr>
-          <tr>
-            <td>画像：</td>
-            <td><%= image_tag @post.get_image(150,150) %></td>
-          </tr>
-          <tr>
-            <td>投稿内容:</td>
-            <td class=><%= @post.body %></td>
-          </tr>
-          <tr>
-            <% if @post.user == current_user %>
-            <td></td>
-            <td class=""><%= link_to "編集", edit_post_path(@post.id), class: "btn btn-outline-success" %>
-              <%= link_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %>
-            </td>
-            <% end %>
-          </tr>
-        </tbody>
-      </table>
-      <div>
-        <p>コメント件数：<%= @post.comments.count %></p>
-        <% @post.comments.each do |comment| %>
-          <%= comment.created_at.strftime('%Y/%m/%d') %>
-          <p class="pb-4">ユーザー名：<%= comment.user.name %></br>
-            <%= comment.comment %>
-            <% if comment.user == current_user %>
-              <%= link_to "コメント削除", post_comment_path(@post.id, comment.id), method: :delete %>
-            <% end %>
-          </p>
-        <% end %>
+  <!--</div>-->
+    <!--<div class="row">-->
+      <div class= "col-md-3">
+        <h3>合戦！<h6>投稿内容詳細</h6></h3>
+        <div class=""><%= image_tag @post.get_image(150,150) %></div>
       </div>
-      <div>
-        <%= form_with model: [@post, @comment] do |f| %>
-        <div class="form-group mt-4 d-flex align-items-center">
+      <!--<div class="col-md-9">-->
+      <div class="col-md-6">
+        <table class= "table">
+          <tr>
+            <th><label>タイトル:</label></th>
+                <td><div class="text-nowrap pr-lg-5"><%= @post.title %></div></td>
+          </tr>
+          <tr>
+            <th><label>投稿者名:</label></th>
+                <td><div class="text-nowrap pr-lg-5"><%= link_to @user.name, user_path(@post.user.id) %></div></td>
+          </tr>
+          <tr>
+            <th><label>武将名:</label></th>
+                <td><div class=><%= @post.bushou.bushou_name %></div></td>
+          </tr>
+          <tr>
+            <th><label>投稿内容:</label></th>
+                <td><div class=><%= @post.body %></div></td>
+          </tr>
+            <% if @post.user == current_user %>
+            <p></p>
+            <div class=""><%= link_to "編集", edit_post_path(@post.id), class: "btn btn-outline-success" %>
+              <%= link_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %>
+            </div>
+          <% end %>
+        </table>
+      </div>
 
-            <%= f.text_area :comment, placeholder: "--コメントする--", class: "mr-auto", cols: 50, rows: 4 %>
-            <%= f.submit "送信", class: "px-5" %>
+        <div>
+          <p>コメント件数：<%= @post.comments.count %></p>
+          <% @post.comments.each do |comment| %>
+            <%= comment.created_at.strftime('%Y/%m/%d') %>
+            <p class="pb-4">ユーザー名：<%= comment.user.name %></br>
+              <%= comment.comment %>
+              <% if comment.user == current_user %>
+                <%= link_to "コメント削除", post_comment_path(@post.id, comment.id), method: :delete %>
+              <% end %>
+            </p>
+          <% end %>
         </div>
-        <% end %>
+        <div>
+          <%= form_with model: [@post, @comment] do |f| %>
+          <div class="form-group mt-4 d-flex align-items-center">
+
+              <%= f.text_area :comment, placeholder: "--コメントする--", class: "mr-auto", cols: 50, rows: 4 %>
+              <%= f.submit "送信", class: "px-3" %>
+          </div>
+          <% end %>
         </div>
       </div>
     </div>
