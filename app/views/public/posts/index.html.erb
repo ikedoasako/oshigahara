@@ -19,8 +19,8 @@
 
       <div class="mt-4 mb-3">
         <h4>攻め入り！</h4>
-        <table class="table">
-          <thead>
+        <table class="table table-sm table-bordered">
+          <thead class="table-primary">
             <tr>
               <th class="text-nowrap pr-lg-5">ユーザー名</th>
               <th class="text-nowrap pr-lg-5">タイトル</th>
@@ -59,7 +59,7 @@
                   <% end %>
                 <% end %>
 
-                <%= link_to "#{post.comments.count} ｺﾒﾝﾄ", post_path(post.id) %>
+                <%= link_to "#{post.comments.count} コメント", post_path(post.id) %>
               </td>
             </tr>
             <% end %>

@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <div class= "row d-flex">
     <div class="col-md-4">
-      <h4 class="mb-5">攻め入り</h4>
+      <h4 class="mb-5">攻め入り！</h4>
       <div>
         <% @posts.each do |post| %>
           <p class="mb-3"><%= link_to bushou_path(post.user.bushou_id) do %>
@@ -23,7 +23,7 @@
             <%= image_tag bushou.get_image(150,150) %>
             <% end %>
           </p>
-          <p><%= bushou.bushou_name %></p>
+          <p class="text-center"><%= bushou.bushou_name %></p>
         </div>
         <% end %>
       </div>

@@ -1,11 +1,11 @@
 <div class="container mt-5 px-5 px-sm-0">
+  <h4 class="mb-4">武将紹介</h4>
   <div class="row">
-    <h3>武将詳細</h3>
-    <div class="col-sm-3">
+    <div class="col-md-3 mt-3">
       <%= image_tag @bushou.get_image(200,200) %><br>
       <%= @bushou.bushou_name %>
     </div>
-    <div class="col-sm-8">
+    <div class="col-md-8 mt-3">
       <%= @bushou.explanation %>
     </div>
   </div>

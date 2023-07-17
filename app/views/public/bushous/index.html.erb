@@ -1,25 +1,27 @@
 <div class="container mt-5">
-  <h3>武将一覧</h3>
+  <h3 class="mb-5">武将の一覧</h3>
+  <div class="mb-5">
+    <h4>
+      前日の合戦勝者は「
+      <%= @top_bushou.bushou_name %>
+      」軍です
+    </h4>
+  </div>
   <div class="row">
     <% @bushous.each do |bushou| %>
-      <div class="col-sm-2">
+      <div class="col-md-2 mt-2 mb-5 mx-3">
         <p><%= link_to bushou_path(bushou.id) do %>
            <%= image_tag bushou.get_image(150,150) %>
            <% end %>
         </p>
-        <p><%= bushou.bushou_name %></p>
+        <p class="text-center"><%= bushou.bushou_name %></p>
+        <p class="text-center"><%= "寝返られた人数：#{@turn_count[bushou.id]}" if @turn_count[bushou.id] %></P>
       </div>
       <div>
-        <%= "寝返った数:#{@turn_count[bushou.id]}" if @turn_count[bushou.id] %>
       </div>
     <% end %>
   </div>
-  <div class="row ustify-content-center">
+  <div class="row  mt-4 justify-content-center">
     <%= paginate @bushous %>
   </div>
-</div>
-
-<div>
-  ポイント一位:
-  <%= @top_bushou.bushou_name %>
 </div>
