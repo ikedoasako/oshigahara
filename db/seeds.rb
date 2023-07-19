@@ -74,10 +74,12 @@ users.each do |user|
   end
 end
 
+#
 if Rails.env.development?
   
 end
 
+#本番環境
 if Rails.env.production?
   
 end

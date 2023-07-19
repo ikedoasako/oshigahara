@@ -10,19 +10,19 @@
         <h6 class="mb-2 ml-4">投稿内容詳細</h6>
         <table class= "table table-borderless mt-3">
           <tr>
-            <td class="text-right text-nowrap">タイトル:</td>
+            <td class="pl-4 text-nowrap">タイトル:</td>
             <td><%= @post.title %></td>
           </tr>
           <tr>
-            <td class="text-right text-nowrap">投稿者名：</td>
+            <td class="pl-4 text-nowrap">投稿者名：</td>
             <td><%= link_to @user.name, user_path(@post.user.id) %></td>
           </tr>
           <tr>
-            <td class="text-right text-nowrap">武将名:</td>
+            <td class="pl-4 text-nowrap">武将名:</td>
             <td><%= @post.bushou.bushou_name %></td>
           </tr>
           <tr>
-            <td class="text-right text-nowrap">投稿内容:</td>
+            <td class="pl-4 text-nowrap">投稿内容:</td>
             <td><%= @post.body %></td>
           </tr>
           <tr>
@@ -53,8 +53,8 @@
         <div class="ml-4">
           <%= form_with model: [@post, @comment] do |f| %>
           <div class="form-group ml-4 mt-4 d-flex align-items-center">
-            <%= f.text_area :comment, placeholder: "--コメントする--", class: "mr-5", cols: 50, rows: 4 %>
-            <%= f.submit "送信", class: "ml-5 px-3" %>
+            <%= f.text_area :comment, placeholder: "--コメントする--", class: "mr-5", cols: 60, rows: 4 %>
+            <%= f.submit "送信", class: "mr-5 mt-5 px-3" %>
           </div>
           <% end %>
         </div>
