@@ -5,37 +5,43 @@ Admin.create!(
 
 #〜タグ検索用の追記〜
 Tag.create([
+  { name: '戦国武将' },
+  { name: '有名' },
+  { name: '名言' },
+  { name: '戦略'},
+  { name: '戦法'},
   { name: '戦国大名の城' },
+  { name: '難攻不落の城'},
   { name: '城主' },
   { name: '城跡'},
   { name: '屋敷跡'},
-  { name: '難攻不落の城'},
   { name: '城下町'},
+  { name: '合戦跡地'},
   { name: '歴史資料館'},
+  { name: '歴史' },
   { name: '日本刀'},
   { name: '刀剣'},
   { name: '愛刀'},
-  { name: '戦略'},
-  { name: '戦法'},
-  { name: '合戦場跡地'},
   { name: '神社'},
-  { name: '観光名所'},
+  { name: '聖地' },
+  { name: '観光'},
+  { name: '行ってみたい' },
   { name: 'おすすめ'}
   ])
 #〜ここまで〜
 
 
 bushou_params = [
-  {:bushou_name=>"織田信長", :explanation=>"安土城"},
-  {:bushou_name=>"上杉謙信", :explanation=>"春日城"},
-  {:bushou_name=>"伊達政宗", :explanation=>"青葉城"},
-  {:bushou_name=>"真田幸村", :explanation=>"六文銭"},
-  {:bushou_name=>"徳川家康", :explanation=>"日光東照宮"},
-  {:bushou_name=>"豊臣秀吉", :explanation=>"大阪城"},
-  {:bushou_name=>"武田信玄", :explanation=>"甲斐の虎"},
-  {:bushou_name=>"黒田官兵衛", :explanation=>"カリスマ"},
-  {:bushou_name=>"明智光秀", :explanation=>"麒麟が来る"},
-  {:bushou_name=>"石田三成", :explanation=>"頭脳派の智将"}
+  {:bushou_name=>"織田信長", :explanation=>"1560年（永禄3年）、駿河の「今川義元」と対峙した「桶狭間の戦い」が有名"},
+  {:bushou_name=>"上杉謙信", :explanation=>"武田軍は意表を突いた「車懸りの陣」（くるまがかりのじん）が有名"},
+  {:bushou_name=>"伊達政宗", :explanation=>"あと10年、20年生まれるのが早ければ天下人となっていたかもしれない"},
+  {:bushou_name=>"真田幸村", :explanation=>"真田幸村という名前が有名ですが、実名は「真田信繁」（さなだのぶしげ）"},
+  {:bushou_name=>"徳川家康", :explanation=>"天下分け目の「関ヶ原の戦い」を経て征夷大将軍となった"},
+  {:bushou_name=>"豊臣秀吉", :explanation=>"「墨俣一夜城」（すのまたいちやじょう）や「金ヶ崎の退き口」（かねがさきののきくち）など様々な逸話を残した"},
+  {:bushou_name=>"武田信玄", :explanation=>"好敵手「上杉謙信と」「川中島の戦い」で1553～1564年（天文22年～永禄7年）の11年間のうちに5度も戦う"},
+  {:bushou_name=>"黒田官兵衛", :explanation=>"様々な戦略を押し出した稀代の知将"},
+  {:bushou_name=>"明智光秀", :explanation=>"「長篠の戦い」、「天王寺の戦い」、「有岡の戦い」など数々の戦に参戦"},
+  {:bushou_name=>"石田三成", :explanation=>"主君である豊臣秀吉への忠義を生涯貫いた"}
 ]
 bushou_params.each do |attributes|
   Bushou.create!(attributes)
@@ -76,12 +82,12 @@ end
 
 #
 if Rails.env.development?
-  
+
 end
 
 #本番環境
 if Rails.env.production?
-  
+
 end
 
 

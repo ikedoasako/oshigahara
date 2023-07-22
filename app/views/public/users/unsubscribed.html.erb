@@ -1,18 +1,22 @@
 <div class="container mt-5">
-  <h3><strong>本当に退会しますか？</strong></h3>
-  <p></p>
-  <div class="row justify-content-center">
-  <h5><strong>退会</strong>すると「会員登録情報」や、  これまでの「投稿」<br>
-  「コメント」履歴が<strong>削除</strong>されます。<br>
-  また、「投稿」や「コメント」を行うことができなくなります。<br>
-  <strong>退会</strong>する場合は、「<strong>退会</strong>する」をクリックしてください。</h5><br />
-  </div>
   <div class="row">
-    <div class="col-sm-2 offset-4">
-      <%= link_to "退会しない", user_path(@user), class: "btn btn-primary" %>
+    <div class="col-md-8 offset-2 text-center">
+      <h3 class="mb-5"><strong>本当に退会しますか？</strong></h3>
+      <h5 class="mt-3 mb-3 text-center">
+        <strong>退会</strong>すると「会員登録情報」や、これまでの「投稿」<br>
+        「コメント」履歴が<strong>削除</strong>されます。<br>
+      </h5>
+      <h5 class="mb-5 text-center">
+        また、「投稿」や「コメント」を行うことができなくなります。<br>
+        <strong>退会</strong>する場合は、「<strong>退会</strong>する」をクリックしてください。</h5><br />
+      </h5>
+      <div>
+        <%= link_to "退会しない", user_path(@user), class: "btn btn-primary", style:"margin-right: 100px" %>
+        <%= link_to users_withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" do %>
+        退会する
+        <% end %>
+      </div>
     </div>
-      <%= link_to users_withdraw_path, method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" do %>
-      退会する
-      <% end %>
+  </div>
   </div>
 </div>

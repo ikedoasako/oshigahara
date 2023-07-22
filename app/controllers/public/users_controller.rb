@@ -6,8 +6,12 @@ class Public::UsersController < ApplicationController
   before_action :ensure_normal_user, only: %i[update destroy]
 
   def show
-    @user = User.find(params[:id])
-    @posts = @user.posts
+    if params[:id] =~ /^[0-9]+$/
+      @user = User.find(params[:id])
+      @posts = @user.posts
+    else
+      redirect_to users_betray_path
+    end
   end
 
 
@@ -28,7 +32,7 @@ class Public::UsersController < ApplicationController
 
   def betray
     @user =current_user
-    
+
     #〜現在の武将を選択できないようにする設定〜
     #今の武将idを除いた武将idを探してくる
     @bushous = Bushou.where.not(id: @user.bushou_id)

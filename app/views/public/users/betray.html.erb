@@ -1,15 +1,17 @@
 <div class="container mt-5">
-<h4><strong>本当に寝返りますか？</h4></strong>
+<%= form_with model: @user, url: users_betrayed_path, method: :patch do |f| %>
   <div class="row">
-  <%= form_with model: @user, url: users_betrayed_path, method: :patch do |f| %>
-    <div class="form_group">
-      <%= f.label "所属軍"%>
-      <%= f.collection_select :bushou_id,  @bushous, :id, :bushou_name %>
+    <div class="col-md-8 offset-2 text-center">
+      <h4><strong>本当に寝返りますか？</h4></strong>
+      <div class="form-group w-50 d-inline-block text-left">
+        <label class="pt-3 pb-2">所属軍</label>
+        <%= f.collection_select :bushou_id,  @bushous, :id, :bushou_name, { include_blank: "--選択してください--"}, { class: "form-control" } %>
+        <div class="mt-5">
+          <%= link_to "寝返らない", user_path(@user), class: "btn btn-primary", style:"margin-left: 50px" %>
+          <%= f.submit "寝返る", class: "btn btn-danger",style:"margin-left: 70px" %>
+        </div>
+      </div>
     </div>
-    <div class="row">
-      <%= link_to "寝返らない", user_path(@user), class: "btn btn-primary" %>
-      <%= f.submit "寝返る" %>
-    </div>
-  <% end %>
   </div>
+  <% end %>
 </div>
