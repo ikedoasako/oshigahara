@@ -51,46 +51,46 @@ bushou_count = Bushou.all.size
 
 User.create!(name: "ゲスト", email: "guest@example.com", password: "password", bushou_id: 1)
 
+#集計用にランダムに武将idを持たせたuserを作成する（20名）
+(1..20).each.with_index(1) do |n, i|
+  user = User.new(
+    name: "user#{n}",
+    email: "user#{n}@example.com",
+    password: "password",
+    bushou_id: rand(1..bushou_count),
+  )
+  #寝返り回数を表示させるため、1〜3名の寝返りuserを作成し武将にランダム表示させる
+  if i % 3 == 0 && user.bushou_id != 1
+    user.old_bushou_id = user.bushou_id - 1
+  end
+  #集計用に武将の投稿を5〜10件にランダムに作成
+  user.save!
+  (1..rand(1..3)).each do |m|
+    user.posts.create!(
+      bushou_id: rand(1..bushou_count),
+      title: "post#{n}_#{m}",
+      body: "text" * rand(5..10)
+    )
+  end
+end
 
 posts = Post.all
 users = User.all.sample(10)
 
-
+#集計用に投稿の数だけいいねをランダムに作成
+users.each do |user|
+  (1..rand(1..posts.size)).each do |n|
+    user.favorites.create!(post_id: n)
+  end
+end
 
 # 開発環境
 if Rails.env.development?
-  #集計用にランダムに武将idを持たせたuserを作成する（20名）
-  (1..20).each.with_index(1) do |n, i|
-    user = User.new(
-      name: "user#{n}",
-      email: "user#{n}@example.com",
-      password: "password",
-      bushou_id: rand(1..bushou_count),
-    )
-    #寝返り回数を表示させるため、1〜3名の寝返りuserを作成し武将にランダム表示させる
-    if i % 3 == 0 && user.bushou_id != 1
-      user.old_bushou_id = user.bushou_id - 1
-    end
-    #集計用に武将の投稿を5〜10件にランダムに作成
-    user.save!
-    (1..rand(1..3)).each do |m|
-      user.posts.create!(
-        bushou_id: rand(1..bushou_count),
-        title: "post#{n}_#{m}",
-        body: "text" * rand(5..10)
-      )
-    end
-  end
-    #集計用に投稿の数だけいいねをランダムに作成
-    users.each do |user|
-    (1..rand(1..posts.size)).each do |n|
-      user.favorites.create!(post_id: n)
-    end
-  end
-  
+
 end
 # rails db:migrate:reset
 # rails db:seed
+
 
 #本番環境
 if Rails.env.production?
