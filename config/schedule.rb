@@ -24,7 +24,9 @@ require File.expand_path(File.dirname(__FILE__) + "/environment")
 rails_env = Rails.env.to_sym
 set :environment, rails_env
 set :output, 'log/cron.log'
-every 2.minute do
+# 毎日午前0時に実行
+every 1.day, at: '0:00 am' do
+#every 2.minute do
   begin
     runner "Batch::DataReset.data_reset"
     runner "Batch::DataReset.data_total"

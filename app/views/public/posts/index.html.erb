@@ -16,7 +16,7 @@
             options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
             { prompt: 'タグで絞り込み検索', onchange: 'submit(this.form);' } %>
         <% end %>
-
+        
       <div class="mt-4 mb-3">
         <%= render "/layouts/error_messages", model: @post %>
         <h4>攻め入り！</h4>

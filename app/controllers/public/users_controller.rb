@@ -1,6 +1,5 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
-
   #〜ゲストユーザーの追記〜
   #ゲストユーザーはユーザー情報の更新・削除は行えないように設定
   before_action :ensure_normal_user, only: %i[update destroy]
